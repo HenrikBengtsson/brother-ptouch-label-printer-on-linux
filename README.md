@@ -254,7 +254,11 @@ AUTHOR
 Installation:
 * Linux
 * C compiler, e.g. GCC
-* CMake
+* [CMake] (on Ubuntu/Debian: `sudo apt install cmake`)
+* [gettext] (on Ubuntu/Debian: `sudo apt install gettext`)
+* [LibGD] (on Ubuntu/Debian: `sudo apt install libgd-dev`)
+* [libusb] v1.0 (on Ubuntu/Debian: `sudo apt install libusb-1.0-0-dev`)
+* ...?
 
 Run time:
 * Linux
@@ -406,3 +410,7 @@ In file included from /home/hb/repositories/other/ptouch-print/src/ptouch-print.
 
 [PT-450]: https://www.brother-usa.com/products/ptd450
 [ptouch-print]: https://git.familie-radermacher.ch/linux/ptouch-print.git
+[CMake]: https://cmake.org/
+[gettext]: https://www.gnu.org/software/gettext/
+[LibGD]: https://libgd.github.io/
+[libusb]: https://libusb.info/
