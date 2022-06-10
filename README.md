@@ -301,6 +301,12 @@ $ PATH="$prefix/bin:$PATH"
 $ MANPATH="$prefix/share/man/man1:$MANPATH"
 ```
 
+Alternative, if you have [Lmod] set up, you can copy [modulefiles/ptouch-print/1.5-r4.lua] to your `MODULEPATH` and just do:
+
+```sh
+$ module load ptouch-print
+```
+
 With this in place, the executable and the manual page should be found;
 
 
@@ -310,6 +316,7 @@ $ command -v ptouch-print
 $ man -w ptouch-print
 /home/hb/software/ptouch-print/share/man/man1/ptouch-print.1
 ```
+
 
 
 
@@ -414,3 +421,5 @@ In file included from /home/hb/repositories/other/ptouch-print/src/ptouch-print.
 [gettext]: https://www.gnu.org/software/gettext/
 [LibGD]: https://libgd.github.io/
 [libusb]: https://libusb.info/
+[Lmod]: https://lmod.readthedocs.io/en/latest/
+[modulefiles/ptouch-print/1.5-r4.lua]: modulefiles/ptouch-print/1.5-r4.lua
