@@ -259,6 +259,8 @@ Run time:
 * `sudo` for permissions to access printer via USB (see below)
 
 
+### Build
+
 ```sh
 $ git clone https://git.familie-radermacher.ch/linux/ptouch-print.git
 $ cd ptouch-print
@@ -274,6 +276,35 @@ $ ls -l build/ptouch-print
 $ build/ptouch-print --version
 ptouch-print version v1.5-r4-g674e0da by Dominic Radermacher
 ```
+
+
+### Install
+
+```sh
+$ prefix=$HOME/software/ptouch-print
+$ mkdir -p "$prefix"/{bin,share/man/man1}
+$ cp build/ptouch-print "$prefix/bin/"
+$ cp ptouch-print.1 "$prefix/share/man/man1"
+```
+
+Update `PATH` and `MANPATH` as below, e.g. in `~/.bashrc`.
+
+```sh
+$ prefix=$HOME/software/ptouch-print
+$ PATH="$prefix/bin:$PATH"
+$ MANPATH="$prefix/share/man/man1:$MANPATH"
+```
+
+With this in place, the executable and the manual page should be found;
+
+
+```sh
+$ command -v ptouch-print
+/home/hb/software/ptouch-print/bin/ptouch-print
+$ man -w ptouch-print
+/home/hb/software/ptouch-print/share/man/man1/ptouch-print.1
+```
+
 
 
 ## Troubleshooting
