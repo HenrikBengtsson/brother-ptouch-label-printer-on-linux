@@ -6,20 +6,19 @@ These are my notes on how to use a Brother P-touch D450 ([PT-450]) from Linux, w
 
 * The label printer is connected to the computer via a USB A-to-Micro B cable
 
-* The **[ptouch-print]** communicates with the printer directly over USB. There is no need to install printer drivers (but Ubuntu might still do so).
+* **ptouch-print** communicates with the printer directly over USB. There is no need to install printer drivers (but Ubuntu might still do so).
 
-* **[ptouch-print]** can send a monochrome PNG file to the label printer
+* **ptouch-print** can send a monochrome PNG file to the label printer
 
-* **[ptouch-print]** can generate a monochrome PNG file from a sequence of multi-line plain text, images, and padding command-line options
+* **ptouch-print** can generate a monochrome PNG file from a sequence of multi-line plain text, images, and padding command-line options
 
-* **[ptouch-print]** can send the sequence directly to the label printer, but it's hard to predict what it will look like. Better to always output to a PNG for preview
+* **ptouch-print** can send the sequence directly to the label printer, but it's hard to predict what it will look like. Better to always output to a PNG for preview
 
-* **[ptouch-print]** can handle multiple monochrome PNG files as input, e.g. either to be print one after each other or to output a new monochrome PNG file. You can add separation by adding `--pad <pixels>` between each `--image <file>` option
+* **ptouch-print** can handle multiple monochrome PNG files as input, e.g. either to be print one after each other or to output a new monochrome PNG file. You can add separation by adding `--pad <pixels>` between each `--image <file>` option
 
-* Do save label tape, **[ptouch-print]** can merge multiple monochrome PNG images into one long PNG image
+* To save label tape, **ptouch-print** can merge multiple monochrome PNG images into one long PNG image
 
-
-* **[ptouch-print]** needs to build from source, which is straightforward if basic compile tools are already installed
+* **ptouch-print** needs to build from source, which is straightforward if basic compile tools are already installed
 
 
 
