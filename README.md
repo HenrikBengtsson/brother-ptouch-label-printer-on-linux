@@ -102,6 +102,9 @@ $ file johndoe.png
 johndoe.png: PNG image data, 467 x 120, 1-bit colormap, non-interlaced
 ```
 
+<img src="images/johndoe.png" style="border: 1px solid #666"/>
+
+
 ### Print PNG image
 
 ```sh
