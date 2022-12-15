@@ -1,5 +1,8 @@
 # Use Brother P-touch Label Printer on Linux
 
+_NOTE: These are my notes on how to use the `ptouch-print` tool. I am **not** the author of `ptouch-print` (<https://git.familie-radermacher.ch/linux/ptouch-print.git>) /Henrik 2022-12-13_
+
+
 These are my notes on how to use a Brother P-touch D450 ([PT-450]) from Linux, which is connected via USB.  They are written around the **[ptouch-print]** command-line tool for communicating with the label printer.
 
 ## Gist
