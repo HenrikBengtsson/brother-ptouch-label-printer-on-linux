@@ -55,7 +55,7 @@ other commands:
 
 ```sh
 $ ptouch-print --version
-ptouch-print version v1.5-r6-g71396e8 by Dominic Radermacher
+ptouch-print version v1.5.r9.g6b82cd6 by Dominic Radermacher
 
 $ ptouch-print --list-supported
 Supported printers (some might have quirks)
@@ -272,19 +272,6 @@ Run time:
 
 ```sh
 $ git clone https://git.familie-radermacher.ch/linux/ptouch-print.git
-
-## NOTE: I get a b
-$ git checkout 71396e8ff
-HEAD is now at 71396e8 change init to first invalidate, then 
-init (maybe needed for some ptouch models?)
-$ git log -1
-commit 71396e8ff1f92f70bf67584a9b65315229fedfb6 (HEAD)
-Author: Dominic Radermacher <dominic@familie-radermacher.ch>
-Date:   Sun Sep 11 06:29:44 2022 +0200
-
-    change init to first invalidate, then init (maybe needed 
-    for some ptouch models?)
-
 $ cd ptouch-print
 $ ./build.sh
 -- The C compiler identification is GNU 9.4.0
@@ -296,7 +283,7 @@ $ ls -l build/ptouch-print
 -rwxrwxr-x 1 hb hb 95920 Dec 14 17:14 build/ptouch-print
 
 $ build/ptouch-print --version
-ptouch-print version v1.5-r6-g71396e8 by Dominic Radermacher
+ptouch-print version v1.5.r9.g6b82cd6 by Dominic Radermacher
 ```
 
 
@@ -317,7 +304,7 @@ $ PATH="$prefix/bin:$PATH"
 $ MANPATH="$prefix/share/man/man1:$MANPATH"
 ```
 
-Alternative, if you have [Lmod] set up, you can copy [modulefiles/ptouch-print/1.5-r6.lua] to your `MODULEPATH` and just do:
+Alternative, if you have [Lmod] set up, you can copy [modulefiles/ptouch-print/1.5-r9.lua] to your `MODULEPATH` and just do:
 
 ```sh
 $ module load ptouch-print
@@ -366,12 +353,19 @@ error = 0000
 ### Installation log
 
 ```sh
+$ cmake --version | head -1
+cmake version 3.25.1
+
+$ $ git log -1 | head -3
+commit 6b82cd6166745505849004cd3ef4a21cfb2336e6
+Author: Dominic Radermacher <dominic@familie-radermacher.ch>
+Date:   Thu Nov 24 06:45:01 2022 +0100
+
 $ ./build.sh
 -- The C compiler identification is GNU 9.4.0
--- Check for working C compiler: /usr/bin/cc
--- Check for working C compiler: /usr/bin/cc -- works
 -- Detecting C compiler ABI info
 -- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
 -- Detecting C compile features
 -- Detecting C compile features - done
 -- Found Gettext: /usr/bin/msgmerge (found version "0.19.8.1") 
@@ -388,37 +382,16 @@ Found GD: YES
 -- Found GD: /usr/lib/x86_64-linux-gnu/libgd.so
 -- Found Git: /usr/bin/git (found version "2.25.1") 
 -- Found PkgConfig: /usr/bin/pkg-config (found version "0.29.1") 
--- Found Intl: /usr/include  
+-- Found Intl: built in to C library  
 -- Checking for module 'libusb-1.0'
 --   Found libusb-1.0, version 1.0.23
 -- Configuring done
 -- Generating done
 -- Build files have been written to: /home/hb/repositories/other/ptouch-print/build
-[ 25%] Generating ../version.h, _version.h
-Scanning dependencies of target ptouch-print
-[ 50%] Building C object CMakeFiles/ptouch-print.dir/src/libptouch.c.o
-/home/hb/repositories/other/ptouch-print/src/libptouch.c: In function ‘ptouch_init’:
-/home/hb/repositories/other/ptouch-print/src/libptouch.c:194:51: warning: pointer targets in passing argument 1 of ‘strlen’ differ in signedness [-Wpointer-sign]
-  194 |  return ptouch_send(ptdev, (uint8_t *)cmd, strlen(cmd));
-      |                                                   ^~~
-      |                                                   |
-      |                                                   uint8_t * {aka unsigned char *}
-In file included from /home/hb/repositories/other/ptouch-print/src/libptouch.c:24:
-/usr/include/string.h:385:35: note: expected ‘const char *’ but argument is of type ‘uint8_t *’ {aka ‘unsigned char *’}
-  385 | extern size_t strlen (const char *__s)
-      |                       ~~~~~~~~~~~~^~~
-[ 75%] Building C object CMakeFiles/ptouch-print.dir/src/ptouch-print.c.o
-/home/hb/repositories/other/ptouch-print/src/ptouch-print.c: In function ‘print_img’:
-/home/hb/repositories/other/ptouch-print/src/ptouch-print.c:93:20: warning: implicit declaration of function ‘ptouch_get_max_width’; did you mean ‘ptouch_getmaxwidth’? [-Wimplicit-function-declaration]
-   93 |  size_t max_pixels=ptouch_get_max_width(ptdev);
-      |                    ^~~~~~~~~~~~~~~~~~~~
-      |                    ptouch_getmaxwidth
-/home/hb/repositories/other/ptouch-print/src/ptouch-print.c:95:22: warning: format ‘%d’ expects argument of type ‘int’, but argument 2 has type ‘size_t’ {aka ‘long unsigned int’} [-Wformat=]
-   95 |  printf("max_pixels=%d, offset=%d\n", max_pixels, offset);
-      |                     ~^                ~~~~~~~~~~
-      |                      |                |
-      |                      int              size_t {aka long unsigned int}
-      |                     %ld
+-- Found Git: /usr/bin/git (found version "2.25.1") 
+[  0%] Built target git-version
+[ 33%] Building C object CMakeFiles/ptouch-print.dir/src/libptouch.c.o
+[ 66%] Building C object CMakeFiles/ptouch-print.dir/src/ptouch-print.c.o
 In file included from /home/hb/repositories/other/ptouch-print/src/ptouch-print.c:32:
 /home/hb/repositories/other/ptouch-print/src/ptouch-print.c: In function ‘main’:
 /home/hb/repositories/other/ptouch-print/include/gettext.h:88:25: warning: statement with no effect [-Wunused-value]
@@ -433,19 +406,33 @@ In file included from /home/hb/repositories/other/ptouch-print/src/ptouch-print.
 /home/hb/repositories/other/ptouch-print/src/ptouch-print.c:485:2: note: in expansion of macro ‘textdomain’
   485 |  textdomain("ptouch-print");
       |  ^~~~~~~~~~
-/home/hb/repositories/other/ptouch-print/src/ptouch-print.c:531:5: warning: implicit declaration of function ‘ptouch_rawstatus’; did you mean ‘ptouch_getstatus’? [-Wimplicit-function-declaration]
-  531 |     ptouch_rawstatus(ptdev->status);
-      |     ^~~~~~~~~~~~~~~~
-      |     ptouch_getstatus
 [100%] Linking C executable ptouch-print
 [100%] Built target ptouch-print
 ```
 
+### Getting compilation errors?
+
+If you get the following error when compiling:
+
+```sh
+CMake Error: The following variables are used in this project, but they are set to NOTFOUND.
+Please set them or make sure they are set and tested correctly in the CMake files:
+Intl_LIBRARY (ADVANCED)
+    linked by target "ptouch-print" in directory /home/hb/repositories/other/ptouch-print
+
+-- Configuring incomplete, errors occurred!
+See also "/home/hb/repositories/other/ptouch-print/build/CMakeFiles/CMakeOutput.log".
+```
+
+you need to update CMake. I got the above error on Ubuntu 20.04 with cmake 3.16.3. After [installing cmake] 3.25.1, the problem went away and the compilation succeeded.
+
+
 [PT-450]: https://www.brother-usa.com/products/ptd450
 [ptouch-print]: https://git.familie-radermacher.ch/linux/ptouch-print.git
 [CMake]: https://cmake.org/
+[installing cmake]: https://cmake.org/download/
 [gettext]: https://www.gnu.org/software/gettext/
 [LibGD]: https://libgd.github.io/
 [libusb]: https://libusb.info/
 [Lmod]: https://lmod.readthedocs.io/en/latest/
-[modulefiles/ptouch-print/1.5-r6.lua]: modulefiles/ptouch-print/1.5-r6.lua
+[modulefiles/ptouch-print/1.5-r9.lua]: modulefiles/ptouch-print/1.5-r9.lua
