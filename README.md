@@ -52,7 +52,7 @@ other commands:
 
 ```sh
 $ ptouch-print --version
-ptouch-print version v1.5-r4-g674e0da by Dominic Radermacher
+ptouch-print version v1.5-r6-g71396e8 by Dominic Radermacher
 
 $ ptouch-print --list-supported
 Supported printers (some might have quirks)
@@ -89,7 +89,7 @@ error = 0000
 ```
 
 
-### Generate PNG
+### Generate PNG image
 
 ```sh
 $ sudo ptouch-print --text "John Doe" "john.doe@example.org" "+1 123-456-7890" --writepng johndoe.png
@@ -269,6 +269,19 @@ Run time:
 
 ```sh
 $ git clone https://git.familie-radermacher.ch/linux/ptouch-print.git
+
+## NOTE: I get a b
+$ git checkout 71396e8ff
+HEAD is now at 71396e8 change init to first invalidate, then 
+init (maybe needed for some ptouch models?)
+$ git log -1
+commit 71396e8ff1f92f70bf67584a9b65315229fedfb6 (HEAD)
+Author: Dominic Radermacher <dominic@familie-radermacher.ch>
+Date:   Sun Sep 11 06:29:44 2022 +0200
+
+    change init to first invalidate, then init (maybe needed 
+    for some ptouch models?)
+
 $ cd ptouch-print
 $ ./build.sh
 -- The C compiler identification is GNU 9.4.0
@@ -277,10 +290,10 @@ $ ./build.sh
 [100%] Built target ptouch-print
 
 $ ls -l build/ptouch-print 
--rwxrwxr-x 1 hb hb 94544 Jun 10 11:29 build/ptouch-print
+-rwxrwxr-x 1 hb hb 95920 Dec 14 17:14 build/ptouch-print
 
 $ build/ptouch-print --version
-ptouch-print version v1.5-r4-g674e0da by Dominic Radermacher
+ptouch-print version v1.5-r6-g71396e8 by Dominic Radermacher
 ```
 
 
@@ -301,7 +314,7 @@ $ PATH="$prefix/bin:$PATH"
 $ MANPATH="$prefix/share/man/man1:$MANPATH"
 ```
 
-Alternative, if you have [Lmod] set up, you can copy [modulefiles/ptouch-print/1.5-r4.lua] to your `MODULEPATH` and just do:
+Alternative, if you have [Lmod] set up, you can copy [modulefiles/ptouch-print/1.5-r6.lua] to your `MODULEPATH` and just do:
 
 ```sh
 $ module load ptouch-print
@@ -381,6 +394,16 @@ Found GD: YES
 [ 25%] Generating ../version.h, _version.h
 Scanning dependencies of target ptouch-print
 [ 50%] Building C object CMakeFiles/ptouch-print.dir/src/libptouch.c.o
+/home/hb/repositories/other/ptouch-print/src/libptouch.c: In function ‘ptouch_init’:
+/home/hb/repositories/other/ptouch-print/src/libptouch.c:194:51: warning: pointer targets in passing argument 1 of ‘strlen’ differ in signedness [-Wpointer-sign]
+  194 |  return ptouch_send(ptdev, (uint8_t *)cmd, strlen(cmd));
+      |                                                   ^~~
+      |                                                   |
+      |                                                   uint8_t * {aka unsigned char *}
+In file included from /home/hb/repositories/other/ptouch-print/src/libptouch.c:24:
+/usr/include/string.h:385:35: note: expected ‘const char *’ but argument is of type ‘uint8_t *’ {aka ‘unsigned char *’}
+  385 | extern size_t strlen (const char *__s)
+      |                       ~~~~~~~~~~~~^~~
 [ 75%] Building C object CMakeFiles/ptouch-print.dir/src/ptouch-print.c.o
 /home/hb/repositories/other/ptouch-print/src/ptouch-print.c: In function ‘print_img’:
 /home/hb/repositories/other/ptouch-print/src/ptouch-print.c:93:20: warning: implicit declaration of function ‘ptouch_get_max_width’; did you mean ‘ptouch_getmaxwidth’? [-Wimplicit-function-declaration]
@@ -422,4 +445,4 @@ In file included from /home/hb/repositories/other/ptouch-print/src/ptouch-print.
 [LibGD]: https://libgd.github.io/
 [libusb]: https://libusb.info/
 [Lmod]: https://lmod.readthedocs.io/en/latest/
-[modulefiles/ptouch-print/1.5-r4.lua]: modulefiles/ptouch-print/1.5-r4.lua
+[modulefiles/ptouch-print/1.5-r6.lua]: modulefiles/ptouch-print/1.5-r6.lua
