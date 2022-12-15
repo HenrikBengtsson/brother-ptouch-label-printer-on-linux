@@ -1,27 +1,44 @@
 # Use Brother P-touch Label Printer on Linux
 
-_NOTE: These are my notes on how to use the `ptouch-print` tool. I am **not** the author of `ptouch-print` (<https://git.familie-radermacher.ch/linux/ptouch-print.git>) /Henrik 2022-12-13_
+_NOTE: These are my notes on how to use the `ptouch-print` tool. I am
+**not** the author of `ptouch-print`
+(<https://git.familie-radermacher.ch/linux/ptouch-print.git>) /Henrik
+2022-12-13_
 
 
-These are my notes on how to use a Brother P-touch D450 ([PT-450]) from Linux, which is connected via USB.  They are written around the **[ptouch-print]** command-line tool for communicating with the label printer.
+These are my notes on how to use a Brother P-touch D450 ([PT-450])
+from Linux, which is connected via USB.  They are written around the
+**[ptouch-print]** command-line tool for communicating with the label
+printer.
 
 ## Gist
 
-* The label printer is connected to the computer via a USB A-to-Micro B cable
+* The label printer is connected to the computer via a USB A-to-Micro
+  B cable
 
-* **ptouch-print** communicates with the printer directly over USB. There is no need to install printer drivers (but Ubuntu might still do so).
+* **ptouch-print** communicates with the printer directly over
+  USB. There is no need to install printer drivers (but Ubuntu might
+  still do so).
 
 * **ptouch-print** can send a monochrome PNG file to the label printer
 
-* **ptouch-print** can generate a monochrome PNG file from a sequence of multi-line plain text, images, and padding command-line options
+* **ptouch-print** can generate a monochrome PNG file from a sequence
+  of multi-line plain text, images, and padding command-line options
 
-* **ptouch-print** can send the sequence directly to the label printer, but it's hard to predict what it will look like. Better to always output to a PNG for preview
+* **ptouch-print** can send the sequence directly to the label
+  printer, but it's hard to predict what it will look like. Better to
+  always output to a PNG for preview
 
-* **ptouch-print** can handle multiple monochrome PNG files as input, e.g. either to be print one after each other or to output a new monochrome PNG file. You can add separation by adding `--pad <pixels>` between each `--image <file>` option
+* **ptouch-print** can handle multiple monochrome PNG files as input,
+  e.g. either to be print one after each other or to output a new
+  monochrome PNG file. You can add separation by adding `--pad
+  <pixels>` between each `--image <file>` option
 
-* To save label tape, **ptouch-print** can merge multiple monochrome PNG images into one long PNG image
+* To save label tape, **ptouch-print** can merge multiple monochrome
+  PNG images into one long PNG image
 
-* **ptouch-print** needs to build from source, which is straightforward if basic compile tools are already installed
+* **ptouch-print** needs to build from source, which is
+  straightforward if basic compile tools are already installed
 
 
 
@@ -117,7 +134,11 @@ max_pixels=128, offset=4
 
 ### Print multiple PNG images at once (saves tape)
 
-The label printer will always feed the tape forward after each print so that the cutter won't cut into the printed content. If you print many labels, one by one, this way, you end up wasting a lot of label tape.  To avoid this, you can print multiple labels at the same time.  For example,
+The label printer will always feed the tape forward after each print
+so that the cutter won't cut into the printed content. If you print
+many labels, one by one, this way, you end up wasting a lot of label
+tape.  To avoid this, you can print multiple labels at the same time.
+For example,
 
 ```sh
 $ sudo ptouch-print --image alice.png --pad 10 --image bob.png --pad 10 --image carol.png
@@ -255,17 +276,19 @@ AUTHOR
 ### Requirements
 
 Installation:
-* Linux
-* C compiler, e.g. GCC
-* [CMake] (on Ubuntu/Debian: `sudo apt install cmake`)
-* [gettext] (on Ubuntu/Debian: `sudo apt install gettext`)
-* [LibGD] (on Ubuntu/Debian: `sudo apt install libgd-dev`)
-* [libusb] v1.0 (on Ubuntu/Debian: `sudo apt install libusb-1.0-0-dev`)
-* ...?
+
+ * Linux
+ * C compiler, e.g. GCC
+ * [CMake] (on Ubuntu/Debian: `sudo apt install cmake`)
+ * [gettext] (on Ubuntu/Debian: `sudo apt install gettext`)
+ * [LibGD] (on Ubuntu/Debian: `sudo apt install libgd-dev`)
+ * [libusb] v1.0 (on Ubuntu/Debian: `sudo apt install libusb-1.0-0-dev`)
+ * ...?
 
 Run time:
-* Linux
-* `sudo` for permissions to access printer via USB (see below)
+
+ * Linux
+ * `sudo` for permissions to access printer via USB (see below)
 
 
 ### Build
@@ -304,13 +327,16 @@ $ PATH="$prefix/bin:$PATH"
 $ MANPATH="$prefix/share/man/man1:$MANPATH"
 ```
 
-Alternative, if you have [Lmod] set up, you can copy [modulefiles/ptouch-print/1.5-r9.lua] to your `MODULEPATH` and just do:
+Alternative, if you have [Lmod] set up, you can copy
+[modulefiles/ptouch-print/1.5-r9.lua] to your `MODULEPATH` and just
+do:
 
 ```sh
 $ module load ptouch-print
 ```
 
-With this in place, the executable and the manual page should be found;
+With this in place, the executable and the manual page should be
+found;
 
 
 ```sh
@@ -333,7 +359,8 @@ PT-D450 found on USB bus 1, device 8
 libusb_open error :LIBUSB_ERROR_ACCESS
 ```
 
-This is due to lack of permissions to access the printer over USB. The quick fix is to run as admin:
+This is due to lack of permissions to access the printer over USB. The
+quick fix is to run as admin:
 
 ```sh
 $ sudo build/ptouch-print --info
@@ -424,7 +451,9 @@ Intl_LIBRARY (ADVANCED)
 See also "/home/hb/repositories/other/ptouch-print/build/CMakeFiles/CMakeOutput.log".
 ```
 
-you need to update CMake. I got the above error on Ubuntu 20.04 with cmake 3.16.3. After [installing cmake] 3.25.1, the problem went away and the compilation succeeded.
+you need to update CMake. I got the above error on Ubuntu 20.04 with
+cmake 3.16.3. After [installing cmake] 3.25.1, and wiping the `build/`
+folder, the compilation succeeded.
 
 
 [PT-450]: https://www.brother-usa.com/products/ptd450
