@@ -279,7 +279,7 @@ Installation:
 
  * Linux
  * Administrative permissions - for setting the [SUID flag] on the built
-   `ptouch-print` executable so that any user can run it with `sudo`
+   `ptouch-print` executable so that any user can run it without `sudo`
  * C compiler, e.g. GCC
  * [CMake] (on Ubuntu/Debian: `sudo apt install cmake`)
  * [gettext] (on Ubuntu/Debian: `sudo apt install gettext`)
