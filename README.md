@@ -14,31 +14,39 @@ printer.
 ## Gist
 
 * The label printer is connected to the computer via a USB A-to-Micro
-  B cable
+  B cable.
 
 * **ptouch-print** communicates with the printer directly over
   USB. There is no need to install printer drivers (but Ubuntu might
   still do so).
 
-* **ptouch-print** can send a monochrome PNG file to the label printer
+* **ptouch-print** can send a monochrome PNG file to the label
+  printer.
 
 * **ptouch-print** can generate a monochrome PNG file from a sequence
-  of multi-line plain text, images, and padding command-line options
+  of multi-line plain text, images, and padding command-line options.
 
 * **ptouch-print** can send the sequence directly to the label
   printer, but it's hard to predict what it will look like. Better to
-  always output to a PNG for preview
+  always output to a PNG for preview.
 
 * **ptouch-print** can handle multiple monochrome PNG files as input,
   e.g. either to be print one after each other or to output a new
   monochrome PNG file. You can add separation by adding `--pad
-  <pixels>` between each `--image <file>` option
+  <pixels>` between each `--image <file>` option.
 
-* To save label tape, **ptouch-print** can merge multiple monochrome
-  PNG images into one long PNG image
+* There will always be 20-30 mm of blank tape wasted at the very front
+  of each print when using these printers. For the PT-450, it's 23
+  mm. This is because the cutter is this distance away from the print
+  head. It's physically impossible to avoid this and has nothing to
+  which printer software you use. To save label tape, try to print
+  multiple labels (images) per print.
+  
+* **ptouch-print** can merge multiple monochrome PNG images into one
+  long PNG image, which helps save tape.
 
 * **ptouch-print** needs to build from source, which is
-  straightforward if basic compile tools are already installed
+  straightforward if basic compile tools are already installed.
 
 
 
