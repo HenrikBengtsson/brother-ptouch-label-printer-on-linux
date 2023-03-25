@@ -98,7 +98,7 @@ Supported printers (some might have quirks)
 ### Query printer from information
 
 ```sh
-$ sudo ptouch-print --info
+$ ptouch-print --info
 PT-D450 found on USB bus 1, device 8
 maximum printing width for this tape is 120px
 media type = 01
@@ -112,7 +112,7 @@ error = 0000
 ### Generate PNG image
 
 ```sh
-$ sudo ptouch-print --text "John Doe" "john.doe@example.org" "+1 123-456-7890" --writepng johndoe.png
+$ ptouch-print --text "John Doe" "john.doe@example.org" "+1 123-456-7890" --writepng johndoe.png
 PT-D450 found on USB bus 1, device 11
 choosing font size=30
 $ ls -l johndoe.png 
@@ -127,7 +127,7 @@ johndoe.png: PNG image data, 467 x 120, 1-bit colormap, non-interlaced
 ### Print PNG image
 
 ```sh
-$ sudo ptouch-print --image johndoe.png
+$ ptouch-print --image johndoe.png
 PT-D450 found on USB bus 1, device 11
 max_pixels=128, offset=4
 ```
@@ -141,7 +141,7 @@ tape.  To avoid this, you can print multiple labels at the same time.
 For example,
 
 ```sh
-$ sudo ptouch-print --image alice.png --pad 10 --image bob.png --pad 10 --image carol.png
+$ ptouch-print --image alice.png --pad 10 --image bob.png --pad 10 --image carol.png
 PT-D450 found on USB bus 1, device 11
 max_pixels=128, offset=4
 ```
@@ -278,6 +278,8 @@ AUTHOR
 Installation:
 
  * Linux
+ * Administrative permissions - for setting the [SUID flag] on the built
+   `ptouch-print` executable so that any user can run it with `sudo`
  * C compiler, e.g. GCC
  * [CMake] (on Ubuntu/Debian: `sudo apt install cmake`)
  * [gettext] (on Ubuntu/Debian: `sudo apt install gettext`)
@@ -285,10 +287,11 @@ Installation:
  * [libusb] v1.0 (on Ubuntu/Debian: `sudo apt install libusb-1.0-0-dev`)
  * ...?
 
+
 Run time:
 
  * Linux
- * `sudo` for permissions to access printer via USB (see below)
+ * Non-privileged user rights (requires setting SUID flag)
 
 
 ### Build
@@ -307,7 +310,12 @@ $ ls -l build/ptouch-print
 
 $ build/ptouch-print --version
 ptouch-print version v1.5.r9.g6b82cd6 by Dominic Radermacher
+
+## Set the SUID flag so 'ptouch-print' can be called via sudo
+$ sudo chmod u+s build/ptouch-print
+$ sudo chown root:root build/ptouch-print
 ```
+
 
 
 ### Install
@@ -360,19 +368,10 @@ libusb_open error :LIBUSB_ERROR_ACCESS
 ```
 
 This is due to lack of permissions to access the printer over USB. The
-quick fix is to run as admin:
-
-```sh
-$ sudo build/ptouch-print --info
-[sudo] password for hb: 
-PT-D450 found on USB bus 1, device 8
-maximum printing width for this tape is 120px
-media type = 01
-media width = 18 mm
-tape color = 01
-text color = 08
-error = 0000
-```
+`ptouch-print` command needs to be executed using admin rights, which
+can be done by prefixing the call using `sudo`, e.g. `sudo
+build/ptouch-print --info`.  However, it is more convenient to set the
+SUID flag (explained above), so that any user can run it as-is.
 
 
 ## Appendix
@@ -487,3 +486,4 @@ ptouch-print version v1.5-r6-g71396e8 by Dominic Radermacher
 [libusb]: https://libusb.info/
 [Lmod]: https://lmod.readthedocs.io/en/latest/
 [modulefiles/ptouch-print/1.5-r9.lua]: modulefiles/ptouch-print/1.5-r9.lua
+[SUID flag]: https://en.wikipedia.org/wiki/Setuid
