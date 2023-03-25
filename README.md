@@ -310,10 +310,6 @@ $ ls -l build/ptouch-print
 
 $ build/ptouch-print --version
 ptouch-print version v1.5.r9.g6b82cd6 by Dominic Radermacher
-
-## Set the SUID flag so 'ptouch-print' can be called via sudo
-$ sudo chmod u+s build/ptouch-print
-$ sudo chown root:root build/ptouch-print
 ```
 
 
@@ -325,6 +321,10 @@ $ prefix=$HOME/software/ptouch-print
 $ mkdir -p "$prefix"/{bin,share/man/man1}
 $ cp build/ptouch-print "$prefix/bin/"
 $ cp ptouch-print.1 "$prefix/share/man/man1"
+
+## Set the SUID flag so 'ptouch-print' can be called via sudo
+$ sudo chmod u+s "$prefix/bin/ptouch-print"
+$ sudo chown root "$prefix/bin/ptouch-print"
 ```
 
 Update `PATH` and `MANPATH` as below, e.g. in `~/.bashrc`.
