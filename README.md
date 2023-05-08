@@ -330,7 +330,7 @@ $ mkdir -p "$prefix"/{bin,share/man/man1}
 $ cp build/ptouch-print "$prefix/bin/"
 $ cp ptouch-print.1 "$prefix/share/man/man1"
 
-## Set the SUID flag so 'ptouch-print' can be called via sudo
+## Set the SUID flag so 'ptouch-print' can be called without sudo
 $ sudo chmod u+s "$prefix/bin/ptouch-print"
 $ sudo chown root "$prefix/bin/ptouch-print"
 ```
