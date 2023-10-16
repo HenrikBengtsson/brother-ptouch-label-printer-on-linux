@@ -3,7 +3,7 @@
 _NOTE: These are my notes on how to use the `ptouch-print` tool. I am
 **not** the author of `ptouch-print`
 (<https://git.familie-radermacher.ch/linux/ptouch-print.git>) /Henrik
-2022-12-13_
+2023-10-16_
 
 
 These are my notes on how to use a Brother P-touch D450 ([PT-450])
@@ -80,7 +80,7 @@ other commands:
 
 ```sh
 $ ptouch-print --version
-ptouch-print version v1.5.r9.g6b82cd6 by Dominic Radermacher
+ptouch-print version v1.5.r12.gf22e844 by Dominic Radermacher
 
 $ ptouch-print --list-supported
 Supported printers (some might have quirks)
@@ -96,6 +96,7 @@ Supported printers (some might have quirks)
 	PT-P700
 	PT-P750W
 	PT-D450
+	PT-D460BT
 	PT-D600
 	PT-P710BT
 ```
@@ -150,11 +151,13 @@ For example,
 
 ```sh
 $ ptouch-print --image alice.png --pad 10 --image bob.png --pad 10 --image carol.png
-PT-D450 found on USB bus 1, device 11
+qPT-D450 found on USB bus 1, device 11
 max_pixels=128, offset=4
 ```
 
 ## Man pages
+
+<!-- COLUMNS=72 man ptouch-print -->
 
 ```sh
 PTOUCH-PRINT(1)           ptouch printer util          PTOUCH-PRINT(1)
@@ -228,6 +231,9 @@ OPTIONS
        --info Show info about the tape detected (like  printing  width
               etc.) and exit.
 
+       --list-supported
+              List all supported printers
+
 DEFAULTS
        The default font used is 'DejaVuSans'.
 
@@ -258,24 +264,10 @@ AUTHOR
        Written   by   Dominic   Radermacher  (dominic@familie-raderma‐
        cher.ch).
 
-       Also      see       https://familie-radermacher.ch/dominic/pro‐
-       ptouch-print --text 'Hello' 'World'
-              Print the text 'Hello World' in two  lines  ('Hello'  in
-              the first line and 'World' in the second line).
-
-       ptouch-print --image icon.png
-              Print   the  image  contained  in  the  PNG  image  file
-              'icon.png'.  The image file must be  palette  based  PNG
-              format with two colors.
-
-AUTHOR
-       Written   by   Dominic   Radermacher  (dominic@familie-raderma‐
-       cher.ch).
-
-       Also      see       https://familie-radermacher.ch/dominic/pro‐
+       Also      see       https://dominic.familie-radermacher.ch/pro‐
        jekte/ptouch-print/
 
-1.4.3                         2021-08-30               PTOUCH-PRINT(1)
+1.5                           2023-03-13               PTOUCH-PRINT(1)
 ```
 
 
@@ -283,7 +275,7 @@ AUTHOR
 
 ### Requirements
 
-Installation:
+Installation requirements:
 
  * Linux
  * Administrative permissions - for setting the [SUID flag] on the built
@@ -296,10 +288,11 @@ Installation:
  * ...?
 
 
-Run time:
+Run-time requirements:
 
  * Linux
  * Non-privileged user rights (requires setting SUID flag)
+
 
 
 ### Build
@@ -308,16 +301,16 @@ Run time:
 $ git clone https://git.familie-radermacher.ch/linux/ptouch-print.git
 $ cd ptouch-print
 $ ./build.sh
--- The C compiler identification is GNU 9.4.0
+-- The C compiler identification is GNU 11.4.0
 ...
 [100%] Linking C executable ptouch-print
 [100%] Built target ptouch-print
 
 $ ls -l build/ptouch-print 
--rwxrwxr-x 1 hb hb 95920 Dec 14 17:14 build/ptouch-print
+-rwxrwxr-x 1 henrik henrik 85408 Oct 16 11:02 build/ptouch-print
 
 $ build/ptouch-print --version
-ptouch-print version v1.5.r9.g6b82cd6 by Dominic Radermacher
+ptouch-print version v1.5.r12.gf22e844 by Dominic Radermacher
 ```
 
 
@@ -388,21 +381,21 @@ SUID flag (explained above), so that any user can run it as-is.
 
 ```sh
 $ cmake --version | head -1
-cmake version 3.25.1
+cmake version 3.22.1
 
 $ $ git log -1 | head -3
-commit 6b82cd6166745505849004cd3ef4a21cfb2336e6
+commit f22e844eed773cc8e9ac876ad102d58dc972bb38
 Author: Dominic Radermacher <dominic@familie-radermacher.ch>
-Date:   Thu Nov 24 06:45:01 2022 +0100
+Date:   Fri Oct 13 12:30:33 2023 +0200
 
 $ ./build.sh
--- The C compiler identification is GNU 9.4.0
+-- The C compiler identification is GNU 11.4.0
 -- Detecting C compiler ABI info
 -- Detecting C compiler ABI info - done
 -- Check for working C compiler: /usr/bin/cc - skipped
 -- Detecting C compile features
 -- Detecting C compile features - done
--- Found Gettext: /usr/bin/msgmerge (found version "0.19.8.1") 
+-- Found Gettext: /usr/bin/msgmerge (found version "0.21") 
 Found GD: YES
 -- Looking for gdImagePng in /usr/lib/x86_64-linux-gnu/libgd.so
 -- Looking for gdImagePng in /usr/lib/x86_64-linux-gnu/libgd.so - found
@@ -414,32 +407,41 @@ Found GD: YES
 -- Looking for gdImageGif in /usr/lib/x86_64-linux-gnu/libgd.so
 -- Looking for gdImageGif in /usr/lib/x86_64-linux-gnu/libgd.so - found
 -- Found GD: /usr/lib/x86_64-linux-gnu/libgd.so
--- Found Git: /usr/bin/git (found version "2.25.1") 
--- Found PkgConfig: /usr/bin/pkg-config (found version "0.29.1") 
+-- Found Git: /usr/bin/git (found version "2.34.1") 
+-- Found PkgConfig: /usr/bin/pkg-config (found version "0.29.2") 
 -- Found Intl: built in to C library  
 -- Checking for module 'libusb-1.0'
---   Found libusb-1.0, version 1.0.23
+--   Found libusb-1.0, version 1.0.25
 -- Configuring done
 -- Generating done
--- Build files have been written to: /home/hb/repositories/other/ptouch-print/build
--- Found Git: /usr/bin/git (found version "2.25.1") 
+-- Build files have been written to: /home/henrik/repositories/other/ptouch-print/build
+-- Found Git: /usr/bin/git (found version "2.34.1") 
 [  0%] Built target git-version
 [ 33%] Building C object CMakeFiles/ptouch-print.dir/src/libptouch.c.o
+/home/henrik/repositories/other/ptouch-print/src/libptouch.c: In function ‘ptouch_send_precut_cmd’:
+/home/henrik/repositories/other/ptouch-print/src/libptouch.c:252:35: warning: pointer targets in passing argument 2 of ‘ptouch_send’ differ in signedness [-Wpointer-sign]
+  252 |         return ptouch_send(ptdev, cmd, sizeof(cmd)-1);
+      |                                   ^~~
+      |                                   |
+      |                                   char *
+/home/henrik/repositories/other/ptouch-print/src/libptouch.c:168:44: note: expected ‘uint8_t *’ {aka ‘unsigned char *’} but argument is of type ‘char *’
+  168 | int ptouch_send(ptouch_dev ptdev, uint8_t *data, size_t len)
+      |                                   ~~~~~~~~~^~~~
 [ 66%] Building C object CMakeFiles/ptouch-print.dir/src/ptouch-print.c.o
-In file included from /home/hb/repositories/other/ptouch-print/src/ptouch-print.c:32:
-/home/hb/repositories/other/ptouch-print/src/ptouch-print.c: In function ‘main’:
-/home/hb/repositories/other/ptouch-print/include/gettext.h:88:25: warning: statement with no effect [-Wunused-value]
+In file included from /home/henrik/repositories/other/ptouch-print/src/ptouch-print.c:32:
+/home/henrik/repositories/other/ptouch-print/src/ptouch-print.c: In function ‘main’:
+/home/henrik/repositories/other/ptouch-print/include/gettext.h:88:25: warning: statement with no effect [-Wunused-value]
    88 |     ((void) (Domainname), (const char *) (Dirname))
       |     ~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~
-/home/hb/repositories/other/ptouch-print/src/ptouch-print.c:484:2: note: in expansion of macro ‘bindtextdomain’
-  484 |  bindtextdomain("ptouch-print", "/usr/share/locale/");
-      |  ^~~~~~~~~~~~~~
-/home/hb/repositories/other/ptouch-print/include/gettext.h:85:34: warning: statement with no effect [-Wunused-value]
+/home/henrik/repositories/other/ptouch-print/src/ptouch-print.c:496:9: note: in expansion of macro ‘bindtextdomain’
+  496 |         bindtextdomain("ptouch-print", "/usr/share/locale/");
+      |         ^~~~~~~~~~~~~~
+/home/henrik/repositories/other/ptouch-print/include/gettext.h:85:34: warning: statement with no effect [-Wunused-value]
    85 | # define textdomain(Domainname) ((const char *) (Domainname))
       |                                 ~^~~~~~~~~~~~~~~~~~~~~~~~~~~~
-/home/hb/repositories/other/ptouch-print/src/ptouch-print.c:485:2: note: in expansion of macro ‘textdomain’
-  485 |  textdomain("ptouch-print");
-      |  ^~~~~~~~~~
+/home/henrik/repositories/other/ptouch-print/src/ptouch-print.c:497:9: note: in expansion of macro ‘textdomain’
+  497 |         textdomain("ptouch-print");
+      |         ^~~~~~~~~~
 [100%] Linking C executable ptouch-print
 [100%] Built target ptouch-print
 ```
@@ -482,7 +484,32 @@ ptouch-print version v1.5-r6-g71396e8 by Dominic Radermacher
 ```
 
 
+#### Compilation error: Could not find GD library
 
+If `./build.sh` produces:
+
+```sh
+Found GD: NO
+CMake Error at cmake/FindGD.cmake:109 (MESSAGE):
+  Could not find GD library
+```
+
+then make sure to install [LibGD].
+
+
+#### Compilation error: No package 'libusb-1.0' found
+
+If `./build.sh` produces:
+
+```sh
+-- Checking for module 'libusb-1.0'
+--   No package 'libusb-1.0' found
+
+CMake Error at /usr/share/cmake-3.22/Modules/FindPkgConfig.cmake:603 (message):
+  A required package was not found
+```
+
+then make sure to install [libusb].
 
 
 [PT-450]: https://www.brother-usa.com/products/ptd450
