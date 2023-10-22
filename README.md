@@ -448,6 +448,37 @@ In file included from /home/henrik/repositories/other/ptouch-print/src/ptouch-pr
 
 ### Getting compilation errors?
 
+
+#### Compilation error: Could not find GD library
+
+If `./build.sh` produces:
+
+```sh
+Found GD: NO
+CMake Error at cmake/FindGD.cmake:109 (MESSAGE):
+  Could not find GD library
+```
+
+then make sure to install [LibGD].
+
+
+#### Compilation error: No package 'libusb-1.0' found
+
+If `./build.sh` produces:
+
+```sh
+-- Checking for module 'libusb-1.0'
+--   No package 'libusb-1.0' found
+
+CMake Error at /usr/share/cmake-3.22/Modules/FindPkgConfig.cmake:603 (message):
+  A required package was not found
+```
+
+then make sure to install [libusb].
+
+
+#### Too old cmake version
+
 If you get the following error when compiling:
 
 ```sh
@@ -483,33 +514,6 @@ $ ptouch-print --version
 ptouch-print version v1.5-r6-g71396e8 by Dominic Radermacher
 ```
 
-
-#### Compilation error: Could not find GD library
-
-If `./build.sh` produces:
-
-```sh
-Found GD: NO
-CMake Error at cmake/FindGD.cmake:109 (MESSAGE):
-  Could not find GD library
-```
-
-then make sure to install [LibGD].
-
-
-#### Compilation error: No package 'libusb-1.0' found
-
-If `./build.sh` produces:
-
-```sh
--- Checking for module 'libusb-1.0'
---   No package 'libusb-1.0' found
-
-CMake Error at /usr/share/cmake-3.22/Modules/FindPkgConfig.cmake:603 (message):
-  A required package was not found
-```
-
-then make sure to install [libusb].
 
 
 [PT-450]: https://www.brother-usa.com/products/ptd450
