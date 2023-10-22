@@ -498,7 +498,8 @@ the `build/` folder, the compilation succeeded.
 If you have trouble upgrading CMake, then you can always try by
 installing version 1.5-r6 from 2022-11-09 that I know compiles with
 cmake 3.16.3.  To do this, check out commit
-[#71396e8ff1](https://git.familie-radermacher.ch/linux/ptouch-print.git/commit/?id=71396e8ff1f92f70bf67584a9b65315229fedfb6) and build from that version, i.e.
+[#71396e8ff1](https://git.familie-radermacher.ch/linux/ptouch-print.git/commit/?id=71396e8ff1f92f70bf67584a9b65315229fedfb6)
+and build from that version, i.e.
 
 ```sh
 $ git clone https://git.familie-radermacher.ch/linux/ptouch-print.git
@@ -507,7 +508,8 @@ $ cd ptouch-print
 $ ./build.sh
 ```
 
-and continue to install following the instructions above.  That will give you:
+and continue to install following the instructions above.  That will
+give you:
 
 ```r
 $ ptouch-print --version
