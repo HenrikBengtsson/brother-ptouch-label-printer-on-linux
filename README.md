@@ -284,7 +284,7 @@ Installation requirements:
  * [CMake] (on Ubuntu/Debian: `sudo apt install cmake`; RedHat/Fedora: `sudo yum install cmake`)
  * [gettext] (on Ubuntu/Debian: `sudo apt install gettext`; RedHat/Fedora: `sudo yum install gettext`)
  * [LibGD] (on Ubuntu/Debian: `sudo apt install libgd-dev`; RedHat/Fedora: `sudo yum install gd-devel`)
- * [libusb] v1.0 (on Ubuntu/Debian: `sudo apt install libusb-1.0-0-dev`; RedHat/Fedora: `sudo yum install libusb1-devel`)
+ * [libusb] v1.0 (on Ubuntu/Debian: `sudo apt install libusb-1.0-0-dev`; RedHat/Fedora: `sudo yum install libusb-devel`)
  * ...?
 
 
