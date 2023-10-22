@@ -281,10 +281,10 @@ Installation requirements:
  * Administrative permissions - for setting the [SUID flag] on the built
    `ptouch-print` executable so that any user can run it without `sudo`
  * C compiler, e.g. GCC
- * [CMake] (on Ubuntu/Debian: `sudo apt install cmake`)
- * [gettext] (on Ubuntu/Debian: `sudo apt install gettext`)
- * [LibGD] (on Ubuntu/Debian: `sudo apt install libgd-dev`)
- * [libusb] v1.0 (on Ubuntu/Debian: `sudo apt install libusb-1.0-0-dev`)
+ * [CMake] (on Ubuntu/Debian: `sudo apt install cmake`; RedHat/Fedora: `sudo yum install cmake`)
+ * [gettext] (on Ubuntu/Debian: `sudo apt install gettext`; RedHat/Fedora: `sudo yum install gettext`)
+ * [LibGD] (on Ubuntu/Debian: `sudo apt install libgd-dev`; RedHat/Fedora: `sudo yum install gd-devel`)
+ * [libusb] v1.0 (on Ubuntu/Debian: `sudo apt install libusb-1.0-0-dev`; RedHat/Fedora: `sudo yum install libusb1-devel`)
  * ...?
 
 
@@ -459,7 +459,7 @@ CMake Error at cmake/FindGD.cmake:109 (MESSAGE):
   Could not find GD library
 ```
 
-then make sure to install [LibGD].
+then make sure to install [LibGD] (see above).
 
 
 #### Compilation error: No package 'libusb-1.0' found
@@ -474,7 +474,7 @@ CMake Error at /usr/share/cmake-3.22/Modules/FindPkgConfig.cmake:603 (message):
   A required package was not found
 ```
 
-then make sure to install [libusb].
+then make sure to install [libusb] (see above).
 
 
 #### Too old cmake version
