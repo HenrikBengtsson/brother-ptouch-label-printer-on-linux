@@ -6,7 +6,7 @@ _NOTE: These are my notes on how to use the `ptouch-print` tool. I am
 2023-10-16_
 
 
-These are my notes on how to use a Brother P-touch D450 ([PT-450])
+These are my notes on how to use a Brother P-touch D450 ([PT-D450])
 from Linux, which is connected via USB.  They are written around the
 **[ptouch-print]** command-line tool for communicating with the label
 printer.
@@ -36,11 +36,11 @@ printer.
   <pixels>` between each `--image <file>` option.
 
 * There will always be 20-30 mm of blank tape wasted at the very front
-  of each print when using these printers. For the PT-450, it's 23
-  mm. This is because the cutter is this distance away from the print
-  head. It's physically impossible to avoid this and has nothing to
-  which printer software you use. To save label tape, try to print
-  multiple labels (images) per print.
+  of each print when using these printers. For the PT-D450, it's 23
+  mm. This is because the (manual) cutter is this distance away from
+  the print head. It's physically impossible to avoid this and has
+  nothing to which printer software you use. To save label tape, try
+  to print multiple labels (images) per print.
   
 * **ptouch-print** can merge multiple monochrome PNG images into one
   long PNG image, which helps save tape.
@@ -518,7 +518,7 @@ ptouch-print version v1.5-r6-g71396e8 by Dominic Radermacher
 
 
 
-[PT-450]: https://www.brother-usa.com/products/ptd450
+[PT-D450]: https://www.brother-usa.com/products/ptd450
 [ptouch-print]: https://git.familie-radermacher.ch/linux/ptouch-print.git
 [CMake]: https://cmake.org/
 [installing cmake]: https://cmake.org/download/
