@@ -565,11 +565,19 @@ ptouch-print version v1.5-r6-g71396e8 by Dominic Radermacher
 If you are unable to get ptouch-print running on your host system, you can run it within a container. 
 
 In order to do so run 
+
+
 `docker build . -t ptouch-print ` 
+
+
 to build an image 
 
 and add 
-`alias ptouch-print="export usb_id=`lsusb | grep Brother | cut -d ' '  -f 2` && alias ptouch-print=\"docker run --rm -t -i --device=/dev/bus/usb/$usb_id asdf ptouch-print\""`
+
+
+``alias ptouch-print="export usb_id=`lsusb | grep Brother | cut -d ' '  -f 2` && alias ptouch-print=\"docker run --rm -t -i --device=/dev/bus/usb/$usb_id asdf ptouch-print\""``
+
+
 to you bashrc
 
 
