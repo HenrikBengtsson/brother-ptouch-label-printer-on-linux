@@ -23,6 +23,6 @@
 ./keyboard_sticker '-' '_' ''
 ./keyboard_sticker '<' '>' '|'   ## CapsLock
 
-magick "key_§_sticker.png" "key_2_sticker.png" "key_4_sticker.png" "key_6_sticker.png" "key_7_sticker.png" "key_8_sticker.png" "key_9_sticker.png" "key_0_sticker.png" "key_+_sticker.png" "key_´_sticker.png" "key_Å_sticker.png" "key_¨_sticker.png" "key_'_sticker.png" "key_<_sticker.png" "key_Ö_sticker.png" "key_Ä_sticker.png" "key_,_sticker.png" "key_._sticker.png" "key_-_sticker.png" +append swedish-keys.png
+magick "key_§_sticker.png" "key_1_sticker.png" "key_2_sticker.png" "key_3_sticker.png" "key_4_sticker.png" "key_5_sticker.png" "key_6_sticker.png" "key_7_sticker.png" "key_8_sticker.png" "key_9_sticker.png" "key_0_sticker.png" "key_+_sticker.png" "key_´_sticker.png" "key_Å_sticker.png" "key_¨_sticker.png" "key_'_sticker.png" "key_<_sticker.png" "key_Ö_sticker.png" "key_Ä_sticker.png" "key_,_sticker.png" "key_._sticker.png" "key_-_sticker.png" +append swedish-keys.png
 
 
