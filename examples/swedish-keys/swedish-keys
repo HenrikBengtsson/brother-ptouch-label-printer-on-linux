@@ -1,0 +1,27 @@
+#! /usr/bin/env bash
+
+./keyboard_sticker '§' '½' '¶'
+./keyboard_sticker '1' '!' '¡'
+./keyboard_sticker '2' '"' '@'
+./keyboard_sticker '3' '#' '£'
+./keyboard_sticker '4' '¤' '$'
+./keyboard_sticker '5' '%' '€'
+./keyboard_sticker '6' '&' '$'
+./keyboard_sticker '7' '/' '{'
+./keyboard_sticker '8' '(' '['
+./keyboard_sticker '9' ')' ']'
+./keyboard_sticker '0' '=' '}'
+./keyboard_sticker '+' '?' '\\'
+./keyboard_sticker '´' '`' '±'
+./keyboard_sticker 'Å' '' ''
+./keyboard_sticker '¨' '^' '~'
+./keyboard_sticker "'" '*' '´'
+./keyboard_sticker 'Ä' '' ''
+./keyboard_sticker 'Ö' '' ''
+./keyboard_sticker ',' ';' ''
+./keyboard_sticker '.' ':' ''
+./keyboard_sticker '-' '_' ''
+
+magick "key_§_sticker.png" "key_2_sticker.png" "key_4_sticker.png" "key_6_sticker.png" "key_7_sticker.png" "key_8_sticker.png" "key_9_sticker.png" "key_0_sticker.png" "key_+_sticker.png" "key_´_sticker.png" "key_Å_sticker.png" "key_¨_sticker.png" "key_'_sticker.png" "key_Ö_sticker.png" "key_Ä_sticker.png" "key_,_sticker.png" "key_._sticker.png" "key_-_sticker.png" +append swedish-keys.png
+
+

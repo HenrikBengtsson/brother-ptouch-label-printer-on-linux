@@ -1,0 +1,27 @@
+#! /usr/bin/env bash
+
+#' Generate a key sticker with white text och black background
+#'
+#' Usage:
+#'  keyboard_sticker <main> <upper> <right>
+#'
+#' Examples:
+#' keyboard_sticker '2' '"' '@'
+#'
+#' Requires: magick (https://imagemagick.org/)
+#'
+#' Author: Henrik Bengtsson
+#' License: MIT
+main=${1:?}
+top=${2:-}
+right=${3:-}
+
+echo "key: ${main} [top: ${top}; right: ${right}]"
+
+magick -size 90x128 xc:black \
+    -fill white -stroke none \
+    -font "DejaVu-Sans-Bold" \
+    -pointsize 23 -annotate +21+46 "${top}"   \
+    -pointsize 35 -annotate +21+96 "${main}"  \
+    -pointsize 19 -annotate +54+93 "${right}" \
+    "key_${main}_sticker.png"
